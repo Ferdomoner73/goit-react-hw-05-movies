@@ -22,6 +22,20 @@ export const fetchTrendingMovies = async () => {
     }
 }
 
+export const fetchMoviesBySearchQuery = async (query) => {
+    try {
+        const response = await axios.get(`${baseUrl}/search/movie?query=${query}`, {
+      params: {
+        api_key: apiKey,
+      },
+    });
+        const recievedData = await response.data;
+        return recievedData;
+    } catch (error) {
+        console.log('Something goes wrong')
+    }
+}
+
 export const fetchEachMovie = async (id) => {
     try {
         const response = await axios.get(`${baseUrl}/movie/${id}`, {
@@ -39,6 +53,20 @@ export const fetchEachMovie = async (id) => {
 export const fetchEachMovieCast = async (id) => {
     try {
         const response = await axios.get(`${baseUrl}/movie/${id}/credits`, {
+      params: {
+        api_key: apiKey,
+      },
+    });
+        const recievedData = await response.data;
+        return recievedData;
+    } catch (error) {
+        console.log('Something goes wrong')
+    }
+}
+
+export const fetchEachMovieReviews = async (id) => {
+    try {
+        const response = await axios.get(`${baseUrl}/movie/${id}/reviews`, {
       params: {
         api_key: apiKey,
       },

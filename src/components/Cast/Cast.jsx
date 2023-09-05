@@ -15,18 +15,26 @@ export const Cast = () => {
 
   return (
     <>
-      {data?.map(eachActor => {
-        return (
-          <li key={eachActor.id}>
-            <img
-              src={`https://image.tmdb.org/t/p/w200/${eachActor.profile_path}`}
-              alt="Actor"
-            />
-            <p>{eachActor.original_name}</p>
-            <p>{eachActor.character}</p>
-          </li>
-        );
-      })}
+      <ul>
+        {data.cast?.length === 0 ? (
+          <p>{`There is no cast of this movie`}</p>
+        ) : (
+          data.cast?.map(actor => {
+            return (
+              <li key={actor.id}>
+                {actor.profile_path && (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
+                    alt="Actor"
+                  />
+                )}
+                <p>{actor.original_name}</p>
+                <p>Character: {actor.character}</p>
+              </li>
+            );
+          })
+        )}
+      </ul>
     </>
   );
 };

@@ -7,7 +7,6 @@ export const Home = () => {
 
   useEffect(() => {
     fetchTrendingMovies().then(response => {
-      console.log(response.results);
       setData(response.results);
     });
   }, []);
@@ -15,19 +14,21 @@ export const Home = () => {
   return (
     <>
       <div>Hello</div>
-      <ul>
-        {data.map(trendingMovie => {
-          return (
-            trendingMovie.original_title && (
-              <li key={trendingMovie.id}>
-                <Link to={`movies/${trendingMovie.id}`} id={trendingMovie.id}>
-                  {trendingMovie.original_title}
-                </Link>
-              </li>
-            )
-          );
-        })}
-      </ul>
+      {data && (
+        <ul>
+          {data.map(trendingMovie => {
+            return (
+              trendingMovie.original_title && (
+                <li key={trendingMovie.id}>
+                  <Link to={`movies/${trendingMovie.id}`} id={trendingMovie.id}>
+                    {trendingMovie.original_title}
+                  </Link>
+                </li>
+              )
+            );
+          })}
+        </ul>
+      )}
     </>
   );
 };

@@ -9,7 +9,6 @@ export const MovieDetails = () => {
   useEffect(() => {
     fetchEachMovie(movieId).then(response => {
       setMovieInfo(response);
-      console.log(response);
     });
   }, [movieId]);
 
@@ -19,7 +18,7 @@ export const MovieDetails = () => {
         <img
           src={
             movieInfo.poster_path &&
-            `https://image.tmdb.org/t/p/w200/${movieInfo.poster_path}`
+            `https://image.tmdb.org/t/p/w300/${movieInfo.poster_path}`
           }
           alt="Film poster"
         />
