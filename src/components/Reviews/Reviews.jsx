@@ -11,7 +11,7 @@ export const Reviews = () => {
     fetchEachMovieReviews(movieId).then(response => {
       setData(response);
     });
-  }, []);
+  }, [movieId]);
 
   return (
     <>

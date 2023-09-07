@@ -11,7 +11,7 @@ export const Cast = () => {
     fetchEachMovieCast(movieId).then(response => {
       setData(response);
     });
-  }, []);
+  }, [movieId]);
 
   return (
     <>
