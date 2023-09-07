@@ -3,7 +3,7 @@ import { Link, Outlet, useParams } from 'react-router-dom';
 import { fetchEachMovie } from '../../api/data';
 import { DetailsContainer, Container, LinkList } from './movie.styled';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [movieInfo, setMovieInfo] = useState([]);
   const { movieId } = useParams();
 
@@ -55,3 +55,5 @@ export const MovieDetails = () => {
     </Container>
   );
 };
+
+export default MovieDetails;

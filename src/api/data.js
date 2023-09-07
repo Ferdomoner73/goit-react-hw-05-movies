@@ -3,11 +3,6 @@ import axios from "axios";
 const baseUrl = 'https://api.themoviedb.org/3';
 const apiKey = 'a0891d2288480a98bcbb04a833141acb';
 
-// const response = await axios.get(`${BaseUrl}?q=${searchValue}&page=${page}&key=${KEY}&image_type=photo&orientation=horizontal&per_page=12`);
-//         const recievedData = await response.data;
-//         return recievedData;
-
-
 export const fetchTrendingMovies = async () => {
     try {
         const response = await axios.get(`${baseUrl}/trending/all/week`, {
