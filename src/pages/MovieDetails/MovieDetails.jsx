@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import { fetchEachMovie } from '../../api/data';
+import { DetailsContainer, Container, LinkList } from './movie.styled';
 
 export const MovieDetails = () => {
   const [movieInfo, setMovieInfo] = useState([]);
@@ -13,8 +14,9 @@ export const MovieDetails = () => {
   }, [movieId]);
 
   return (
-    <>
-      <div>
+    <Container>
+      <Link to="/">Go back</Link>
+      <DetailsContainer>
         <img
           src={
             movieInfo.poster_path &&
@@ -40,16 +42,16 @@ export const MovieDetails = () => {
             </li>
           </ul>
         </div>
-      </div>
-      <ul>
+      </DetailsContainer>
+      <LinkList>
         <li>
           <Link to="cast"> Cast</Link>
         </li>
         <li>
           <Link to="reviews">Reviews</Link>
         </li>
-      </ul>
+      </LinkList>
       <Outlet />
-    </>
+    </Container>
   );
 };

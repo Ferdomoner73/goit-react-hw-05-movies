@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { fetchMoviesBySearchQuery } from 'api/data';
 import { Link } from 'react-router-dom';
 
-export const Movies = () => {
+const Movies = () => {
   const [searchData, setSearchData] = useState('');
   const [data, setData] = useState([]);
   const [isSubmit, setIsSubmit] = useState(false);
@@ -56,3 +56,5 @@ export const Movies = () => {
     </>
   );
 };
+
+export default Movies;

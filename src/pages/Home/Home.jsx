@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchTrendingMovies } from '../../api/data';
 
-export const Home = () => {
+const Home = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -13,7 +13,6 @@ export const Home = () => {
 
   return (
     <>
-      <div>Hello</div>
       {data && (
         <ul>
           {data.map(trendingMovie => {
@@ -32,3 +31,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;
