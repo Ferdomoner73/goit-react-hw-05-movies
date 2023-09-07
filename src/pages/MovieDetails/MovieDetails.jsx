@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchEachMovie } from '../../api/data';
 import { DetailsContainer, Container, LinkList } from './movie.styled';
 
@@ -7,15 +7,22 @@ const MovieDetails = () => {
   const [movieInfo, setMovieInfo] = useState([]);
   const { movieId } = useParams();
 
+  const location = useLocation();
+
+  console.log(location);
+
   useEffect(() => {
     fetchEachMovie(movieId).then(response => {
       setMovieInfo(response);
     });
   }, [movieId]);
 
+  const prevPath = useRef(location.state.from);
+  console.log(prevPath);
+
   return (
     <Container>
-      <Link to="/">Go back</Link>
+      <Link to={prevPath.current}>Go back</Link>
       <DetailsContainer>
         <img
           src={
@@ -45,10 +52,14 @@ const MovieDetails = () => {
       </DetailsContainer>
       <LinkList>
         <li>
-          <Link to="cast"> Cast</Link>
+          <Link to="cast" state={{ from: location }}>
+            Cast
+          </Link>
         </li>
         <li>
-          <Link to="reviews">Reviews</Link>
+          <Link to="reviews" state={{ from: location }}>
+            Reviews
+          </Link>
         </li>
       </LinkList>
       <Outlet />

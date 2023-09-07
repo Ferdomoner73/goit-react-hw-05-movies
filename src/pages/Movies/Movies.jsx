@@ -1,12 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
 import { fetchMoviesBySearchQuery } from 'api/data';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Movies = () => {
   const [searchData, setSearchData] = useState('');
   const [data, setData] = useState([]);
   const [isSubmit, setIsSubmit] = useState(false);
+  const location = useLocation();
 
   const handleInputChange = e => {
     setSearchData(e.target.value);
@@ -44,7 +45,11 @@ const Movies = () => {
             data.results?.map(movie => {
               return (
                 <li key={movie.id}>
-                  <Link to={`${movie.id}`} id={movie.id}>
+                  <Link
+                    to={`${movie.id}`}
+                    id={movie.id}
+                    state={{ from: location }}
+                  >
                     {movie.title}
                   </Link>
                 </li>
