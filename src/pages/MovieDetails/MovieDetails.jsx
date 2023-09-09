@@ -9,8 +9,6 @@ const MovieDetails = () => {
 
   const location = useLocation();
 
-  console.log(location);
-
   useEffect(() => {
     fetchEachMovie(movieId).then(response => {
       setMovieInfo(response);
@@ -18,7 +16,6 @@ const MovieDetails = () => {
   }, [movieId]);
 
   const prevPath = useRef(location.state.from);
-  console.log(prevPath);
 
   return (
     <Container>
